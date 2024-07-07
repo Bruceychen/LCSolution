@@ -1,7 +1,7 @@
-package Easy;
-// #905
+package javaLang.easy.q905;
+// #905 #sort-array-by-parity #java #easy
 // https://leetcode.com/problems/sort-array-by-parity/
-public class Sort_array_by_parity {
+public class Solution1 {
     public int[] sortArrayByParity(int[] A) {
         int[] odd = new int[A.length];
         int[] outcome = new int[A.length];
