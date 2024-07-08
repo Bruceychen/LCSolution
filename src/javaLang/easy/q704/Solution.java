@@ -3,18 +3,25 @@ package javaLang.easy.q704;
 // 704 #easy #Binary Search #java #CoreConcept
 public class Solution {
     public static int binarySearch(int[] array, int target){
-        int left=0, right = array.length - 1;
-        while (left <= right){
-            int mid = left + (right - left)/2;
-            if(array[mid] == target) {
-                return mid;
-            }
-            if(array[mid] < target){
-                left = mid + 1;
-            }else {
-                right = mid -1;
-            }
+        int lp, rp, mp = 0;
+        lp = 0;
+        rp = array.length - 1;
+        mp = lp + (rp - lp) / 2;
 
+        if (target == array[lp])
+            return lp;
+        if (target == array[rp])
+            return rp;
+        while (lp < rp) {
+            if (target == array[mp]) {
+                return mp;
+            } else if (target > array[mp]) {
+                lp = mp + 1;
+            } else if (target < array[mp]) {
+                rp = mp - 1;
+            } else {
+                return -1;
+            }
         }
         return -1;
     }
