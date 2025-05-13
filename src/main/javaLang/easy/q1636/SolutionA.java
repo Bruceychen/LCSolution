@@ -9,8 +9,12 @@ public class SolutionA {
     public int[] frequencySort(int[] nums) {
         // Count frequency of each number
         Map<Integer, Integer> frequencyMap = new HashMap<>();
-        for (int num : nums) {
-            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        // new Array to carry boxed number for later sorting
+        Integer[] boxedNums = new Integer[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            frequencyMap.put(nums[i], frequencyMap.getOrDefault(nums[i], 0) + 1);
+            boxedNums[i] = nums[i];
         }
 
         // Custom comparator to sort by frequency (ascending)
@@ -19,19 +23,13 @@ public class SolutionA {
             int freqA = frequencyMap.get(a);
             int freqB = frequencyMap.get(b);
 
-            if (freqA == freqB) {
-                return Integer.compare(b, a); // Descending order for values
-                // don't return return b-a to avoid overflow
-            }
-            return Integer.compare(freqA, freqB); // Ascending order for frequencies
-            // don't return return a - b to avoid overflow
+            // return b, a because we want to sort in descending order
+            if (freqA == freqB)
+                return Integer.compare(b, a); // don't return return b - a to avoid overflow
+
+            return Integer.compare(freqA, freqB); // don't return return a - b to avoid overflow
         };
 
-        // Convert to Integer array to use with custom comparator
-        Integer[] boxedNums = new Integer[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            boxedNums[i] = nums[i];
-        }
 
         // Sort using custom comparator
         Arrays.sort(boxedNums, customComparator);
