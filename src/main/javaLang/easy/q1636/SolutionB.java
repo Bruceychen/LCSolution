@@ -12,15 +12,16 @@ public class SolutionB {
                         .boxed()
                         .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-        // Convert to boxed array and apply sorting
+        // Convert to boxed array and apply sorting using a Comparator
         return Arrays.stream(nums)
                 .boxed()
-                .sorted((a, b) -> compareByFrequencyThenValue(a, b, frequencyMap))
+//                .sorted((a, b) -> compareByFrequencyThenValue(a, b, frequencyMap))
+                .sorted(compareByFrequencyThenValue(frequencyMap))
                 .mapToInt(Integer::intValue)
                 .toArray();
     }
 
-    // Standalone comparator method
+    // legacy-style comparison method (not used anymore)
     private int compareByFrequencyThenValue(Integer a, Integer b, Map<Integer, Long> frequencyMap) {
         // Compare by frequency (ascending)
         int freqCompare = frequencyMap.get(a).compareTo(frequencyMap.get(b));
@@ -31,5 +32,16 @@ public class SolutionB {
         }
 
         return freqCompare;
+    }
+
+    private Comparator<Integer> compareByFrequencyThenValue(Map<Integer, Long> frequencyMap) {
+        return (a, b) -> {
+            Long fra = frequencyMap.get(a);
+            Long frb = frequencyMap.get(b);
+
+            if (fra.equals(frb)) return Integer.compare(b, a);
+
+            return Long.compare(fra, frb);
+        };
     }
 }

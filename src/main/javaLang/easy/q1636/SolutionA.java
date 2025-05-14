@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-
+// without lambda/stream api
 public class SolutionA {
     public int[] frequencySort(int[] nums) {
         // Count frequency of each number
@@ -19,19 +19,10 @@ public class SolutionA {
 
         // Custom comparator to sort by frequency (ascending)
         // If frequencies are equal, sort by value (descending)
-        Comparator<Integer> customComparator = (a, b) -> {
-            int freqA = frequencyMap.get(a);
-            int freqB = frequencyMap.get(b);
-
-            // return b, a because we want to sort in descending order
-            if (freqA == freqB)
-                return Integer.compare(b, a); // don't return return b - a to avoid overflow
-
-            return Integer.compare(freqA, freqB); // don't return return a - b to avoid overflow
-        };
-
+        Comparator<Integer> customComparator = this.customComparator(frequencyMap);
 
         // Sort using custom comparator
+        // since its an object array but not a List/Collection, can only use Arrays
         Arrays.sort(boxedNums, customComparator);
 
         // Convert back to int array
@@ -41,4 +32,18 @@ public class SolutionA {
 
         return nums;
     }
+
+    private Comparator<Integer> customComparator(final Map<Integer, Integer> frequencyMap) {
+        return new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                Integer fra = frequencyMap.get(a);
+                Integer frb = frequencyMap.get(b);
+
+                if (fra.equals(frb)) return Integer.compare(b, a);
+                return Integer.compare(fra, frb);
+            }
+        };
+    }
+
 }
