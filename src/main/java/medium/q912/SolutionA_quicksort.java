@@ -1,5 +1,7 @@
 package medium.q912;
 
+// may refer to 
+// https://www.youtube.com/watch?v=Vtckgz38QHs
 public class SolutionA_quicksort {
     public int[] sortArray(int[] nums) {
         if (nums == null || nums.length == 0) return nums;
