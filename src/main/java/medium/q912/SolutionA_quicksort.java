@@ -9,39 +9,39 @@ public class SolutionA_quicksort {
         return nums;
     }
 
-    private void quicksort(int[] nums, int l, int r) {
-        if (l >= r)
-            return;
-        int mid = partition(nums, l, r);
-        quicksort(nums, l, mid - 1);
-        quicksort(nums, mid + 1, r);
+    private void quicksort(int[] nums, int start, int end) {
+        if (start >= end) return;
+        int midPivot = partition(nums, start, end);
+        quicksort(nums, start, midPivot - 1);
+        quicksort(nums, midPivot + 1, end);
 
     }
 
-    private int partition(int[] nums, int l, int r) {
-        int pivotindex = l + (int) (Math.random() * (r - l + 1));
-        swap(nums, l, pivotindex);
+    private int partition(int[] nums, int start, int end) {
+        // randomize to avoid worst case
+        int pivotindex = start + (int) (Math.random() * (end - start + 1));
+        swap(nums, start, pivotindex);
 
-        int pivot = nums[l];
-        while (l < r) {
-            while (l < r && nums[r] >= pivot) {
-                r--;
+        int pivot = nums[start];
+        while (start < end) {
+            while (start < end && nums[end] >= pivot) {
+                end--;
             }
-            nums[l] = nums[r];
-            while (l < r && nums[l] <= pivot) {
-                l++;
+            nums[start] = nums[end];
+            while (start < end && nums[start] <= pivot) {
+                start++;
             }
-            nums[r] = nums[l];
+            nums[end] = nums[start];
         }
-        nums[l] = pivot;
-        return l;
+        nums[start] = pivot;
+        return start;
     }
 
-    private void swap(int[] nums, int l, int pivotindex) {
-        if (l != pivotindex) {
-            nums[l] = nums[l] + nums[pivotindex];
-            nums[pivotindex] = nums[l] - nums[pivotindex];
-            nums[l] = nums[l] - nums[pivotindex];
+    private void swap(int[] nums, int start, int pivotindex) {
+        if (start != pivotindex) {
+            nums[start] = nums[start] + nums[pivotindex];
+            nums[pivotindex] = nums[start] - nums[pivotindex];
+            nums[start] = nums[start] - nums[pivotindex];
         }
     }
 
