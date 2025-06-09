@@ -1,4 +1,4 @@
-package main.javaLang.easy.q225;
+package easy.q225;
 
 import java.util.LinkedList;
 import java.util.Queue;
