@@ -1,11 +1,6 @@
 package medium.q238;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-class Solution {
+class Solution1 {
     public int[] productExceptSelf(int[] nums) {
         int[] output = new int[nums.length];
         int prefix = 1;
