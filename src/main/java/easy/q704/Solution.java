@@ -1,4 +1,4 @@
-package main.javaLang.easy.q704;
+package easy.q704;
 
 // 704 #easy #Binary Search #java #CoreConcept
 public class Solution {

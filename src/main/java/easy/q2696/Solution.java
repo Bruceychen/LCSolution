@@ -1,4 +1,4 @@
-package main.javaLang.easy.q2696;
+package easy.q2696;
 
 import java.util.Stack;
 

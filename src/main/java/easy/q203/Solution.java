@@ -1,4 +1,4 @@
-package main.javaLang.easy.q203;
+package easy.q203;
 
 import main.javaLang.ListNode;
 

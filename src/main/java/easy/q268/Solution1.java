@@ -1,4 +1,4 @@
-package main.javaLang.easy.q268;
+package easy.q268;
 
 // q268 #easy #missing-number #java
 public class Solution1 {

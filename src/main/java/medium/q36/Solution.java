@@ -1,3 +1,3 @@
-package main.javaLang.medium.q36;
+package medium.q36;
 
 public class Solution {}

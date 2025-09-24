@@ -1,4 +1,4 @@
-package main.javaLang.easy.q349;
+package easy.q349;
 
 import java.util.Arrays;
 import java.util.Set;

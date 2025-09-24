@@ -1,4 +1,4 @@
-package main.javaLang.easy.q905;
+package easy.q905;
 // #905 #sort-array-by-parity #java #easy
 // https://leetcode.com/problems/sort-array-by-parity/
 public class Solution1 {

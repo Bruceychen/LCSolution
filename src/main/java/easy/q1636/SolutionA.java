@@ -1,4 +1,4 @@
-package main.javaLang.easy.q1636;
+package easy.q1636;
 
 import java.util.Arrays;
 import java.util.Comparator;

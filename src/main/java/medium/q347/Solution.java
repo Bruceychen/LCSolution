@@ -1,4 +1,4 @@
-package main.javaLang.medium.q347;
+package medium.q347;
 
 import java.util.ArrayList;
 import java.util.HashMap;
